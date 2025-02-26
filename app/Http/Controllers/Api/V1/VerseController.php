@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\VerseCollection;
 use App\Models\Verse;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class VerseController extends Controller
      */
     public function index()
     {
-        return response()->json(Verse::paginate(20), 200);
+        return new VerseCollection(Verse::paginate(20));
     }
 
     /**

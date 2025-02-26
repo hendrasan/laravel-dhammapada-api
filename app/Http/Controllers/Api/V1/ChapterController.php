@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ChapterCollection;
+use App\Http\Resources\ChapterResource;
 use App\Models\Chapter;
-use Illuminate\Http\Request;
 
 class ChapterController extends Controller
 {
@@ -13,7 +14,7 @@ class ChapterController extends Controller
      */
     public function index()
     {
-        return response()->json(Chapter::all(), 200);
+        return new ChapterCollection(Chapter::all());
     }
 
     /**
@@ -21,6 +22,6 @@ class ChapterController extends Controller
      */
     public function show(Chapter $chapter)
     {
-        return response()->json($chapter, 200);
+        return new ChapterResource($chapter->load('verses'));
     }
 }
