@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\VerseCollection;
+use App\Http\Resources\VerseResource;
 use App\Models\Verse;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class VerseController extends Controller
      */
     public function index()
     {
-        return new VerseCollection(Verse::paginate(20));
+        return new VerseCollection(Verse::with('chapter')->paginate(20));
     }
 
     /**
@@ -22,6 +23,6 @@ class VerseController extends Controller
      */
     public function show(Verse $verse)
     {
-        return response()->json($verse, 200);
+        return new VerseResource($verse->load('chapter'));
     }
 }
