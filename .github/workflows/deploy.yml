@@ -23,4 +23,6 @@ jobs:
             cd /var/www/laravel-dhammapada-api || git clone https://github.com/${{ github.repository }}.git /var/www/laravel-dhammapada-api
             cd /var/www/laravel-dhammapada-api
 
-            git pull origin main
+            chmod +x ./scripts/deploy.sh
+
+            ./scripts/deploy.sh
