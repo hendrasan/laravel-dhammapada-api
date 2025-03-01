@@ -10,5 +10,6 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('/chapters/{chapter}', [ChapterController::class, 'show']);
 
     Route::get('/verses', [VerseController::class, 'index']);
+    Route::get('/verses/random', [VerseController::class, 'random']);
     Route::get('/verses/{verse}', [VerseController::class, 'show']);
 });
