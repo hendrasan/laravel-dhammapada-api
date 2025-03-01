@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\ChapterController;
+use App\Http\Controllers\Api\V1\SearchController;
 use App\Http\Controllers\Api\V1\VerseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -12,4 +13,6 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('/verses', [VerseController::class, 'index']);
     Route::get('/verses/random', [VerseController::class, 'random']);
     Route::get('/verses/{verse}', [VerseController::class, 'show']);
+
+    Route::get('/search', [SearchController::class, 'index']);
 });
