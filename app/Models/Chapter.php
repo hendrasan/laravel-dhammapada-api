@@ -9,6 +9,6 @@ class Chapter extends Model
 {
     public function verses(): HasMany
     {
-        return $this->hasMany(Verse::class);
+        return $this->hasMany(Verse::class)->orderBy('id');
     }
 }
